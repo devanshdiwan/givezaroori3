@@ -218,26 +218,34 @@
             margin-top: 30px;
         }
 
-        /* --- About Us Section Styles (kept same) --- */
+        /* --- About Us Section Styles (kept same for structure) --- */
         #about {
             background-color: var(--white);
         }
-        #about h3 {
-            margin-top: 2em;
-            margin-bottom: 1em;
+        #about h3 { /* Adjusted slightly based on content */
+            margin-top: 1.5em; /* Reduced top margin slightly */
+            margin-bottom: 0.8em; /* Reduced bottom margin slightly */
             text-align: left;
-             border-bottom: 2px solid var(--accent-green);
-             padding-bottom: 5px;
-             display: inline-block;
+            border-bottom: 2px solid var(--accent-green);
+            padding-bottom: 5px;
+            display: inline-block;
         }
-        #about .about-intro p {
+        /* Targeting specific paragraphs if needed */
+         #about .about-intro p {
              font-size: 1.1rem;
-             max-width: 800px;
-             margin-left: auto;
-             margin-right: auto;
-             text-align: center;
+             max-width: 900px; /* Allow slightly wider text */
+             margin-left: 0; /* Align left */
+             margin-right: 0;
+             text-align: left; /* Align left */
              margin-bottom: 1.5em;
         }
+        /* Paragraphs directly under container and after h3 */
+        #about > .container > p {
+            max-width: 900px;
+            text-align: left;
+            color: var(--text-light);
+        }
+
 
         #about .how-it-works-recap ol {
             list-style: decimal;
@@ -247,6 +255,12 @@
          #about .how-it-works-recap li {
               margin-bottom: 0.5em;
               color: var(--text-light);
+         }
+         #about .how-it-works-recap p { /* Style the "It's that easy" text */
+             text-align: left;
+             font-weight: 600;
+             color: var(--primary-blue);
+             margin-top: -0.5em; /* Pull closer to list */
          }
 
         .values-list {
@@ -259,13 +273,13 @@
              background-color: var(--light-bg);
              padding: 20px;
              border-radius: 5px;
-              border-left: 4px solid var(--accent-orange);
+             border-left: 4px solid var(--accent-orange);
          }
          .values-list strong {
-             display: block;
+             /* display: block; */ /* Removed display block */
              color: var(--primary-blue);
-             margin-bottom: 5px;
-             font-weight: 600;
+             /* margin-bottom: 5px; */ /* Removed margin bottom */
+             font-weight: 700; /* Made slightly bolder */
          }
 
         .founders-grid {
@@ -273,6 +287,7 @@
              grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
              gap: 30px;
              margin-top: 1em;
+             margin-bottom: 1em; /* Added margin bottom */
         }
         .founder-card {
             text-align: center;
@@ -306,15 +321,23 @@
              margin-bottom: 10px;
              display: block;
          }
-        .join-movement {
-             margin-top: 2.5em;
+         /* Paragraph within founder card */
+         .founder-card p {
+             font-size: 0.95rem; /* Slightly smaller text */
              text-align: center;
-             font-size: 1.2rem;
-             font-weight: 600;
-             color: var(--primary-blue);
+         }
+
+        .join-movement {
+             /* margin-top: 2.5em; */ /* Removed top margin, handled by h3 */
+             text-align: left; /* Align left */
+             /* font-size: 1.2rem; */ /* Removed font size */
+             /* font-weight: 600; */ /* Removed font weight */
+             /* color: var(--primary-blue); */ /* Removed color */
         }
         .join-movement p {
-            color: var(--primary-blue);
+            color: var(--text-light); /* Use standard paragraph color */
+            font-size: 1.1rem; /* Slightly larger */
+            max-width: 900px;
         }
 
         /* --- How It Works Section --- */
@@ -352,12 +375,19 @@
             font-size: 1.2rem;
             margin-bottom: 15px;
         }
-         .step:nth-child(2) .step-number, .step:nth-child(2) { border-top-color: #fbc02d; background-color: #fbc02d; }
-         .step:nth-child(3) .step-number, .step:nth-child(3) { border-top-color: var(--accent-orange); background-color: var(--accent-orange); }
+         /* Color adjustments for steps - Note: CSS logic below for background might override border color */
+         .step:nth-child(1) .step-number, .step:nth-child(1) { border-top-color: var(--accent-green); }
+         .step:nth-child(1) .step-number { background-color: var(--accent-green); }
+         .step:nth-child(2) .step-number, .step:nth-child(2) { border-top-color: #fbc02d; } /* Yellow border */
+         .step:nth-child(2) .step-number { background-color: #fbc02d; } /* Yellow circle */
+         .step:nth-child(3) .step-number, .step:nth-child(3) { border-top-color: var(--accent-orange); } /* Orange border */
+         .step:nth-child(3) .step-number { background-color: var(--accent-orange); } /* Orange circle */
+
 
         .step h3 {
             color: var(--primary-blue);
             margin-bottom: 10px;
+            font-size: 1.3rem; /* Slightly increased size */
         }
 
         /* --- Donate Page Specific Styles (kept same) --- */
@@ -442,7 +472,8 @@
             .btn { width: 80%; max-width: 300px;}
             .steps-container { flex-direction: column; align-items: center; }
             .step { flex-basis: 80%; }
-            #about .about-intro p { font-size: 1rem; } #about h3 { margin-top: 1.5em; }
+            #about .about-intro p, #about > .container > p, #about .join-movement p { font-size: 1rem; max-width: 100%; } /* Adjust about text on mobile */
+            #about h3 { margin-top: 1.5em; }
             .footer-content { flex-direction: column; text-align: center; } .footer-section { margin-bottom: 20px;}
             .donate-options-container { flex-direction: column; align-items: center; } .donate-option-card { width: 90%; max-width: 500px; }
             .item-category-buttons { flex-direction: column; align-items: stretch; }
@@ -459,7 +490,7 @@
                 <img src="givezroori_logo.png" alt="GiveZRoori Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <span class="logo-text" style="display: none;">GiveZRoori</span>
              </div>
-            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">☰</button>
             <nav class="main-nav" id="main-nav">
                 <ul>
                     <li><a href="#hero" class="nav-link homepage-link active">Home</a></li>
@@ -492,14 +523,23 @@
         <section id="about" class="about-section">
             <div class="container">
                 <h2>About GiveZRoori</h2>
+
+                <!-- Updated "Who We Are" section -->
+                <h3>Who We Are</h3>
                 <div class="about-intro">
                      <p>GiveZRoori is a purpose-driven platform that connects generous individuals with NGOs in need. We’re here to make donating everyday essentials—like clothes, books, toys, or gadgets—easier, more transparent, and truly impactful.</p>
                 </div>
+
+                <!-- Updated "Our Mission" section -->
                 <h3>Our Mission</h3>
                 <p>To bridge the gap between kindness and need. We aim to create a reliable system where your unused or extra items can bring real change to someone’s life.</p>
+
+                <!-- Updated "Why We Exist" section -->
                 <h3>Why We Exist</h3>
                 <p>Every home has something extra—something someone else desperately needs. We noticed how difficult it is to find trustworthy channels to donate items, and that’s where GiveZRoori comes in—to simplify and systematize the donation process for both givers and NGOs.</p>
-                <h3>How It Works (Simplified)</h3>
+
+                <!-- Updated "How It Works" section -->
+                <h3>How It Works</h3>
                  <div class="how-it-works-recap">
                     <ol>
                         <li>Choose Items to Donate</li>
@@ -507,35 +547,43 @@
                         <li>Schedule a Pickup or Drop-off</li>
                         <li>Track Your Impact</li>
                     </ol>
-                    <p>It’s that easy to make a difference.</p>
+                    <p>It’s that easy.</p> <!-- Updated paragraph -->
                  </div>
+
+                <!-- Updated "Our Values" section -->
                 <h3>Our Values</h3>
                 <ul class="values-list">
-                    <li><strong>Transparency</strong>We ensure your donations reach where they’re needed.</li>
-                     <li><strong>Empathy</strong>Every action we take is rooted in understanding and compassion.</li>
-                     <li><strong>Accessibility</strong>Making it easy for everyone to give back, no matter where they are.</li>
-                    <li><strong>Sustainability</strong>Giving a second life to your items reduces waste and helps the planet.</li>
+                    <li><strong>Transparency</strong> – We ensure your donations reach where they’re needed.</li>
+                     <li><strong>Empathy</strong> – Every action we take is rooted in understanding and compassion.</li>
+                     <li><strong>Accessibility</strong> – Making it easy for everyone to give back, no matter where they are.</li>
+                    <li><strong>Sustainability</strong> – Giving a second life to your items reduces waste and helps the planet.</li>
                 </ul>
-                <h3>Meet the Team</h3>
+
+                <!-- Updated "Founders" section -->
+                <h3>Founder & Co-Founder</h3> <!-- Updated heading -->
                 <div class="founders-grid">
                     <div class="founder-card">
-                         <div class="founder-img"><span>Image</span></div>
+                         <div class="founder-img"><span>Image</span></div> <!-- Kept image placeholder -->
                          <h4>Divyanshu Diwan</h4>
                          <span class="founder-title">Founder</span>
                          <p>A visionary with a passion for creating social impact, Divyanshu believes in building a platform where every unused item can find its purpose.</p>
                     </div>
                      <div class="founder-card">
-                         <div class="founder-img"><span>Image</span></div>
+                         <div class="founder-img"><span>Image</span></div> <!-- Kept image placeholder -->
                          <h4>Nidhi Jha</h4>
                          <span class="founder-title">Co-Founder</span>
                          <p>A driven and compassionate leader, Nidhi brings creativity and heart to GiveZRoori’s mission, ensuring that every donation reaches the right hands.</p>
                     </div>
                 </div>
-                <div class="join-movement">
+
+                <!-- Updated "Join the Movement" section -->
+                 <h3>Join the Movement</h3> <!-- Added heading -->
+                 <div class="join-movement">
                     <p>At GiveZRoori, we believe every small act of giving is a step towards a better society. Be a part of the change—because your giving is zaroori.</p>
                 </div>
             </div>
         </section>
+
 
         <!-- How It Works Section (Detailed) -->
         <section id="how-it-works" class="main-content-section">
@@ -646,7 +694,7 @@
                  <div class="footer-section links"><h4>Support</h4><ul><li><a href="#contact" class="contact-link">Contact Us</a></li><li><a href="#privacy">Privacy Policy</a></li><li><a href="#terms">Terms & Conditions</a></li><li><a href="#ngo-policy">NGO Policy</a></li></ul></div>
                  <div class="footer-section contact"><h4>Contact Info</h4><p>Email: info@givezroori.com</p><p>Phone: +123 456 7890</p><p>Location: Your City, Country</p></div>
             </div>
-            <div class="footer-bottom">&copy; 2024 GiveZRoori | All Rights Reserved</div>
+            <div class="footer-bottom">© 2024 GiveZRoori | All Rights Reserved</div>
         </div>
     </footer>
 
