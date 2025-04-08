@@ -422,7 +422,18 @@
 
         /* --- Featured NGOs Section --- */
         #featured-ngos { background-color: var(--light-bg); }
-        .ngo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 30px; }
+        /* Make the grid center the single item */
+        .ngo-grid {
+             display: grid;
+             /* grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); */ /* Removed auto-fit */
+             grid-template-columns: minmax(280px, 1fr); /* Single column */
+             gap: 30px;
+             margin-top: 30px;
+             justify-content: center; /* Center the grid container itself if needed */
+             max-width: 600px; /* Max width for the single centered card */
+             margin-left: auto;
+             margin-right: auto;
+        }
         .ngo-card { background-color: var(--white); border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .ngo-card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
         .ngo-card img { width: 100%; height: 180px; object-fit: cover; }
@@ -478,6 +489,7 @@
             .donate-options-container { flex-direction: column; align-items: center; } .donate-option-card { width: 90%; max-width: 500px; }
             .item-category-buttons { flex-direction: column; align-items: stretch; }
             .confirmation-message div { flex-direction: column; align-items: center; } .confirmation-message .btn { width: 80%; max-width: 300px; }
+             .ngo-grid { max-width: 90%; } /* Allow single NGO card to take more width on mobile */
         }
     </style>
 </head>
@@ -496,9 +508,8 @@
                     <li><a href="#hero" class="nav-link homepage-link active">Home</a></li>
                     <li><a href="#about" class="nav-link about-us-link">About Us</a></li>
                     <li><a href="#how-it-works" class="nav-link homepage-link">How It Works</a></li>
-                    <li><a href="#featured-ngos" class="nav-link homepage-link">Explore NGOs</a></li>
+                    <li><a href="#featured-ngos" class="nav-link homepage-link">Featured NGO</a></li> <!-- Updated text -->
                     <li><a href="#donate-page" class="nav-link homepage-link">Donate</a></li>
-                    <!-- Add future links like Contact here -->
                      <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
@@ -514,7 +525,7 @@
                 <p class="subtext">GiveZRoori connects your unused items to trusted NGOs in need, making giving simple and impactful.</p>
                 <div class="cta-buttons">
                     <a href="#donate-page" class="btn btn-primary homepage-link">Donate Now</a>
-                    <a href="#featured-ngos" class="btn btn-secondary homepage-link">Find NGOs</a>
+                    <a href="#featured-ngos" class="btn btn-secondary homepage-link">Featured NGO</a> <!-- Updated text -->
                 </div>
             </div>
         </section>
@@ -638,15 +649,26 @@
         <!-- Featured NGOs Section -->
         <section id="featured-ngos" class="main-content-section">
             <div class="container">
-                <h2>Featured NGOs</h2>
+                <h2>Featured NGO</h2> <!-- Changed heading slightly as there's only one -->
                 <div class="ngo-grid">
-                    <div class="ngo-card"><img src="https://via.placeholder.com/400x180/cccccc/969696?text=NGO+Image+1" alt="NGO Name 1"><div class="ngo-card-content"><h3>Hope Foundation</h3><span class="ngo-cause">Children's Education</span><p>Providing educational resources and support to underprivileged children.</p><a href="#ngo-profile-1" class="btn btn-primary btn-small">Learn More & Donate</a></div></div>
-                    <div class="ngo-card"><img src="https://via.placeholder.com/400x180/cccccc/969696?text=NGO+Image+2" alt="NGO Name 2"><div class="ngo-card-content"><h3>Green Earth Initiative</h3><span class="ngo-cause">Environment</span><p>Working towards environmental conservation and sustainable practices.</p><a href="#ngo-profile-2" class="btn btn-primary btn-small">Learn More & Donate</a></div></div>
-                     <div class="ngo-card"><img src="https://via.placeholder.com/400x180/cccccc/969696?text=NGO+Image+3" alt="NGO Name 3"><div class="ngo-card-content"><h3>Shelter Support Services</h3><span class="ngo-cause">Homelessness</span><p>Offering shelter, food, and support to those experiencing homelessness.</p><a href="#ngo-profile-3" class="btn btn-primary btn-small">Learn More & Donate</a></div></div>
+                    <!-- Updated NGO Card -->
+                    <div class="ngo-card">
+                        <img src="https://via.placeholder.com/400x180/cccccc/969696?text=Join+Together+Trust" alt="Join Together Trust (JTT)">
+                        <div class="ngo-card-content">
+                            <h3>Join Together Trust (JTT)</h3>
+                            <span class="ngo-cause">Children's Education</span>
+                            <p>At Join Together Trust (JTT), we believe that education is not just a privilege but a fundamental human right. Since 2016, our mission has been to bring quality education to the children of laborers, ragpickers, and slum dwellers—those often left behind. Through our makeshift schools and community-driven initiatives, we reach where others don’t, ensuring every child has the opportunity to learn, grow, and realize their full potential.</p>
+                            <!-- Updated link below -->
+                            <a href="https://www.wejointogether.in" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-small">Learn More & Donate</a>
+                        </div>
+                    </div>
+                    <!-- Removed the other two NGO cards -->
                 </div>
-                 <div style="text-align: center; margin-top: 40px;"><a href="#explore-ngos" class="btn btn-secondary homepage-link">Explore All NGOs</a></div>
+                 <!-- Removed the "Explore All NGOs" button -->
+                 <!-- <div style="text-align: center; margin-top: 40px;"><a href="#explore-ngos" class="btn btn-secondary homepage-link">Explore All NGOs</a></div> -->
             </div>
         </section>
+
 
          <!-- Why GiveZRoori Section -->
         <section id="why-us" class="main-content-section">
@@ -690,7 +712,7 @@
         <div class="container">
             <div class="footer-content">
                  <div class="footer-section about"><h4>About GiveZRoori</h4><p>Connecting donors with NGOs...</p><div class="footer-socials"><a href="#" aria-label="Facebook">F</a><a href="#" aria-label="Twitter">T</a><a href="#" aria-label="Instagram">I</a></div></div>
-                 <div class="footer-section links"><h4>Quick Links</h4><ul><li><a href="#about" class="about-us-link">About Us</a></li><li><a href="#how-it-works" class="homepage-link">How It Works</a></li><li><a href="#featured-ngos" class="homepage-link">Explore NGOs</a></li><li><a href="#faq">FAQs</a></li><li><a href="#blog">Blog</a></li></ul></div>
+                 <div class="footer-section links"><h4>Quick Links</h4><ul><li><a href="#about" class="about-us-link">About Us</a></li><li><a href="#how-it-works" class="homepage-link">How It Works</a></li><li><a href="#featured-ngos" class="homepage-link">Featured NGO</a></li><li><a href="#faq">FAQs</a></li><li><a href="#blog">Blog</a></li></ul></div>
                  <div class="footer-section links"><h4>Support</h4><ul><li><a href="#contact" class="contact-link">Contact Us</a></li><li><a href="#privacy">Privacy Policy</a></li><li><a href="#terms">Terms & Conditions</a></li><li><a href="#ngo-policy">NGO Policy</a></li></ul></div>
                  <div class="footer-section contact"><h4>Contact Info</h4><p>Email: info@givezroori.com</p><p>Phone: +123 456 7890</p><p>Location: Your City, Country</p></div>
             </div>
