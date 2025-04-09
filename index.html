@@ -436,7 +436,13 @@
         }
         .ngo-card { background-color: var(--white); border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .ngo-card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
-        .ngo-card img { width: 100%; height: 180px; object-fit: cover; }
+        .ngo-card img {
+            width: 100%;
+            height: 200px; /* Adjusted height slightly */
+            object-fit: contain; /* Changed from cover to contain to show full logo */
+            padding: 10px; /* Added padding around the logo */
+            background-color: #fff; /* Ensure white background if logo has transparency */
+        }
         .ngo-card-content { padding: 20px; }
         .ngo-card h3 { margin-bottom: 10px; }
         .ngo-card .ngo-cause { display: inline-block; background-color: var(--light-bg); color: var(--primary-blue); padding: 3px 10px; border-radius: 15px; font-size: 0.8rem; margin-bottom: 10px; }
@@ -459,15 +465,57 @@
         .testimonial-author cite { font-weight: 600; color: var(--primary-blue); }
 
         /* --- Footer --- */
-        .main-footer { background-color: var(--primary-blue); color: var(--white); padding: 40px 0 20px 0; margin-top: 60px; }
-        .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; margin-bottom: 30px; }
-        .footer-section h4 { color: var(--white); margin-bottom: 15px; font-size: 1.1rem; }
-        .footer-section ul li { margin-bottom: 8px; }
-        .footer-section ul li a { color: #cccccc; transition: color 0.3s ease; }
-        .footer-section ul li a:hover { color: var(--white); }
-        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid #4a6a9d; font-size: 0.9rem; color: #cccccc; }
-        .footer-socials a { color: var(--white); margin: 0 8px; font-size: 1.3rem; transition: color 0.3s ease; }
-        .footer-socials a:hover { color: var(--accent-orange); }
+        .main-footer {
+            background-color: var(--primary-blue); /* Keep */
+            color: #e0e0e0; /* Slightly softer default text color */
+            padding: 40px 0 20px 0;
+            margin-top: 60px;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .footer-section h4 {
+            color: var(--white); /* Keep headings bright white */
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+         /* Ensure paragraphs use the new default footer color */
+         .footer-section p {
+             color: #e0e0e0;
+         }
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+        .footer-section ul li a {
+            /* color: #cccccc; */ /* Old color */
+            color: #80cbc4; /* Lighter teal/green for links */
+            transition: color 0.3s ease;
+        }
+        .footer-section ul li a:hover {
+            /* color: var(--white); */ /* Old hover */
+            color: var(--accent-orange); /* Use accent orange for hover */
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #4a6a9d; /* Keep lighter blue border */
+            font-size: 0.9rem;
+            /* color: #cccccc; */ /* Old color */
+             color: #b0bec5; /* Lighter blue-grey text for bottom */
+        }
+        .footer-socials a {
+            color: var(--white); /* Keep social icons white */
+            margin: 0 8px;
+            font-size: 1.3rem;
+            transition: color 0.3s ease;
+        }
+        .footer-socials a:hover {
+            color: var(--accent-orange); /* Keep orange hover for social icons */
+        }
 
         /* --- Responsive Design --- */
         @media (max-width: 768px) {
@@ -490,6 +538,7 @@
             .item-category-buttons { flex-direction: column; align-items: stretch; }
             .confirmation-message div { flex-direction: column; align-items: center; } .confirmation-message .btn { width: 80%; max-width: 300px; }
              .ngo-grid { max-width: 90%; } /* Allow single NGO card to take more width on mobile */
+             .ngo-card img { height: 150px; } /* Adjust logo height for mobile */
         }
     </style>
 </head>
@@ -502,7 +551,7 @@
                 <img src="givezroori_logo.png" alt="GiveZRoori Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <span class="logo-text" style="display: none;">GiveZRoori</span>
              </div>
-            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">☰</button>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">?</button>
             <nav class="main-nav" id="main-nav">
                 <ul>
                     <li><a href="#hero" class="nav-link homepage-link active">Home</a></li>
@@ -614,12 +663,12 @@
                 <h2>Choose How You Want to Donate</h2>
                 <div class="donate-options-container">
                     <div class="donate-option-card">
-                        <div><div class="donate-option-icon">💰</div><h3>Donate Money</h3><p>Support NGOs financially with a one-time or recurring donation.</p></div>
+                        <div><div class="donate-option-icon">??</div><h3>Donate Money</h3><p>Support NGOs financially with a one-time or recurring donation.</p></div>
                         <div><button class="btn btn-primary" onclick="showDonateMoneyForm()">Donate Money Now</button></div>
                         <div id="donate-money-form-container" class="donation-form-container" style="display: none; text-align: left;">
                             <h4>Enter Donation Details</h4>
                             <form id="money-donation-form">
-                                <div class="form-group amount-options"><label>Select Amount (₹):</label><div class="radio-group"><label><input type="radio" name="amount" value="100"> 100</label><label><input type="radio" name="amount" value="500" checked> 500</label><label><input type="radio" name="amount" value="1000"> 1000</label><label><input type="radio" name="amount" value="custom"> Custom</label></div><input type="number" id="custom-amount" name="custom_amount" placeholder="Enter Custom Amount" style="display: none; margin-top: 10px; width: 100%; padding: 10px;"></div>
+                                <div class="form-group amount-options"><label>Select Amount (?):</label><div class="radio-group"><label><input type="radio" name="amount" value="100"> 100</label><label><input type="radio" name="amount" value="500" checked> 500</label><label><input type="radio" name="amount" value="1000"> 1000</label><label><input type="radio" name="amount" value="custom"> Custom</label></div><input type="number" id="custom-amount" name="custom_amount" placeholder="Enter Custom Amount" style="display: none; margin-top: 10px; width: 100%; padding: 10px;"></div>
                                 <div class="form-group"><label for="payment-method">Payment Method:</label><p style="font-size: 0.9em; color: var(--text-light);">UPI, Credit/Debit Card, Net Banking (Integration Required)</p><div style="margin-top:10px; padding:15px; background:#eee; border-radius:4px; text-align:center; color:#888;">[ Payment Gateway Placeholder ]</div></div>
                                 <div class="form-group checkbox-group"><label><input type="checkbox" name="recurring"> Make this a monthly donation</label></div>
                                 <div class="form-group checkbox-group"><label><input type="checkbox" name="anonymous"> Donate anonymously</label></div>
@@ -628,11 +677,11 @@
                         </div>
                     </div>
                     <div class="donate-option-card">
-                         <div><div class="donate-option-icon">🎁</div><h3>Donate Items</h3><p>Give your pre-loved clothes, toys, books, and more a new life.</p></div>
+                         <div><div class="donate-option-icon">??</div><h3>Donate Items</h3><p>Give your pre-loved clothes, toys, books, and more a new life.</p></div>
                          <div><button class="btn btn-primary" onclick="showDonateItemsOptions()">Choose Items to Donate</button></div>
                         <div id="donate-items-options-container" class="item-category-container" style="display: none;">
                             <h4>What would you like to donate?</h4>
-                            <div class="item-category-buttons"><button class="item-category-btn" data-form="donate-clothes-form"><span class="icon">👚</span> Clothes</button><button class="item-category-btn" data-form="donate-toys-form"><span class="icon">🧸</span> Toys</button><button class="item-category-btn" data-form="donate-books-form"><span class="icon">📚</span> Books</button><button class="item-category-btn" data-form="donate-other-form"><span class="icon">📦</span> Other Items</button></div>
+                            <div class="item-category-buttons"><button class="item-category-btn" data-form="donate-clothes-form"><span class="icon">??</span> Clothes</button><button class="item-category-btn" data-form="donate-toys-form"><span class="icon">??</span> Toys</button><button class="item-category-btn" data-form="donate-books-form"><span class="icon">??</span> Books</button><button class="item-category-btn" data-form="donate-other-form"><span class="icon">??</span> Other Items</button></div>
                         </div>
                     </div>
                 </div>
@@ -653,12 +702,12 @@
                 <div class="ngo-grid">
                     <!-- Updated NGO Card -->
                     <div class="ngo-card">
-                        <img src="https://via.placeholder.com/400x180/cccccc/969696?text=Join+Together+Trust" alt="Join Together Trust (JTT)">
+                        <!-- Updated image source and alt text -->
+                        <img src="jtt_logo.png" alt="Join Together Trust (JTT) Logo">
                         <div class="ngo-card-content">
                             <h3>Join Together Trust (JTT)</h3>
                             <span class="ngo-cause">Children's Education</span>
                             <p>At Join Together Trust (JTT), we believe that education is not just a privilege but a fundamental human right. Since 2016, our mission has been to bring quality education to the children of laborers, ragpickers, and slum dwellers—those often left behind. Through our makeshift schools and community-driven initiatives, we reach where others don’t, ensuring every child has the opportunity to learn, grow, and realize their full potential.</p>
-                            <!-- Updated link below -->
                             <a href="https://www.wejointogether.in" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-small">Learn More & Donate</a>
                         </div>
                     </div>
@@ -675,10 +724,10 @@
             <div class="container">
                  <h2>Why Choose GiveZRoori?</h2>
                  <div class="features-grid">
-                     <div class="feature-item"><div class="icon">✔️</div><h3>Verified NGOs</h3><p>We partner only with thoroughly vetted and trusted non-profit organizations.</p></div>
-                     <div class="feature-item"><div class="icon">🚚</div><h3>Free & Easy Pickup</h3><p>Schedule convenient pickups right from your doorstep, often free of charge.</p></div>
-                      <div class="feature-item"><div class="icon">📍</div><h3>Trackable Donations</h3><p>Know exactly where your items go and the impact they make.</p></div>
-                       <div class="feature-item"><div class="icon">💖</div><h3>Make a Real Difference</h3><p>Your unused items get a second life helping those who need them most.</p></div>
+                     <div class="feature-item"><div class="icon">??</div><h3>Verified NGOs</h3><p>We partner only with thoroughly vetted and trusted non-profit organizations.</p></div>
+                     <div class="feature-item"><div class="icon">??</div><h3>Free & Easy Pickup</h3><p>Schedule convenient pickups right from your doorstep, often free of charge.</p></div>
+                      <div class="feature-item"><div class="icon">??</div><h3>Trackable Donations</h3><p>Know exactly where your items go and the impact they make.</p></div>
+                       <div class="feature-item"><div class="icon">??</div><h3>Make a Real Difference</h3><p>Your unused items get a second life helping those who need them most.</p></div>
                  </div>
              </div>
         </section>
@@ -720,8 +769,21 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Supabase Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Main JavaScript -->
     <script>
+        // --- Supabase Initialization ---
+        const SUPABASE_URL = 'PASTE_YOUR_SUPABASE_URL_HERE'; // <-- PASTE YOUR ACTUAL PROJECT URL HERE
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFsZGlkaHB2enVlaXZtZXdjaXl6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQxMjI1OTcsImV4cCI6MjA1OTY5ODU5N30.gEIGPM5lcGkxJEMCCc2q4EeWtCzy1y9VJaOgBL5AOQ0'; // Your key
+
+        // Create a single Supabase client for interacting with your database
+        // Check if supabase object exists before creating client
+        const supabase = (typeof supabase === 'undefined' || !supabase)
+            ? window.supabase?.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+            : supabase;
+
         // --- DOM References ---
         const menuToggle = document.getElementById('menu-toggle');
         const mainNav = document.getElementById('main-nav');
@@ -731,6 +793,15 @@
         const aboutSection = document.getElementById('about');
         const mainContentSections = document.querySelectorAll('.main-content-section'); // Sections belonging to homepage flow
         const header = document.querySelector('.main-header');
+        const donateMoneyContainer = document.getElementById('donate-money-form-container');
+        const donateItemsContainer = document.getElementById('donate-items-options-container');
+        const itemFormsWrapper = document.getElementById('item-forms-wrapper');
+        const allItemForms = document.querySelectorAll('.item-donation-form');
+        const itemCategoryButtons = document.querySelectorAll('.item-category-btn');
+        const confirmationSection = document.getElementById('confirmation-section');
+        const referenceIdElement = document.getElementById('reference-id');
+        const moneyForm = document.getElementById('money-donation-form'); // Reference money form
+
 
         // --- Mobile Menu Logic ---
         if (menuToggle && mainNav) {
@@ -749,7 +820,6 @@
         });
 
         // --- Page Switching Logic ---
-
         function showAboutPage() {
             // Hide all main homepage sections
             mainContentSections.forEach(section => section.style.display = 'none');
@@ -801,7 +871,6 @@
         }
 
         // --- Event Listeners for Navigation ---
-
         if (aboutUsLink) {
             aboutUsLink.addEventListener('click', (event) => {
                 event.preventDefault(); // Prevent default anchor jump
@@ -841,7 +910,6 @@
               });
          }
 
-
         // --- Scroll Spy Logic ---
         function handleScrollSpy() {
              // Do not run if About Us is displayed
@@ -873,7 +941,6 @@
              // Ensure 'hero' is active if scrolled fully to top
              if (pageYOffset < 100) current = 'hero';
 
-
             // Update nav links based on 'current' section
              allNavLinks.forEach(a => {
                  a.classList.remove('active');
@@ -892,28 +959,334 @@
         // Attach initially only if About Us is not shown (which it isn't by default)
         window.addEventListener('scroll', handleScrollSpy, { passive: true });
 
-
-        // --- Donate Page Logic (Keep Existing) ---
-        const donateMoneyContainer = document.getElementById('donate-money-form-container');
-        const donateItemsContainer = document.getElementById('donate-items-options-container');
-        const itemFormsWrapper = document.getElementById('item-forms-wrapper');
-        const allItemForms = document.querySelectorAll('.item-donation-form');
-        const itemCategoryButtons = document.querySelectorAll('.item-category-btn');
-        const confirmationSection = document.getElementById('confirmation-section');
-        const referenceIdElement = document.getElementById('reference-id');
+        // --- Donate Page Logic (UI Functions) ---
         const pickupDropoffHTML = `<div class="pickup-dropoff-form"><h4>Pickup or Drop-off Details</h4><div class="form-group"><label>Choose Option:</label><div class="radio-group"><label><input type="radio" name="delivery_option" value="pickup" checked onchange="togglePickupFields(this)"> Request Pickup</label><label><input type="radio" name="delivery_option" value="dropoff" onchange="togglePickupFields(this)"> I will Drop-off</label></div></div><div class="pickup-fields"><div class="form-group"><label for="donor_name">Your Name:</label><input type="text" id="donor_name" name="donor_name" required></div><div class="form-group"><label for="donor_address">Pickup Address:</label><textarea id="donor_address" name="donor_address" rows="3" required></textarea></div><div class="form-group"><label for="donor_contact">Contact Number:</label><input type="tel" id="donor_contact" name="donor_contact" required pattern="[0-9]{10,}" title="Please enter a valid phone number (at least 10 digits)"></div><div class="form-group"><label for="pickup_date">Preferred Pickup Date:</label><input type="date" id="pickup_date" name="pickup_date" min="${new Date().toISOString().split('T')[0]}"></div><div class="form-group"><label for="pickup_time">Preferred Pickup Time:</label><select id="pickup_time" name="pickup_time"><option value="" disabled selected>-- Select Time Slot --</option><option value="Morning (9am-12pm)">Morning (9am-12pm)</option><option value="Afternoon (1pm-4pm)">Afternoon (1pm-4pm)</option><option value="Evening (4pm-7pm)">Evening (4pm-7pm)</option></select></div></div><div class="dropoff-info" style="display: none;"><p>Thank you! Please drop off items at our nearest partner center...</p><p><i>[Placeholder: List of drop-off zones...]</i></p></div></div>`;
         document.querySelectorAll('.pickup-dropoff-section').forEach(section => { section.innerHTML = pickupDropoffHTML; });
-        function showDonateMoneyForm(){/*... (implementation kept same) ...*/ if(donateItemsContainer)donateItemsContainer.style.display='none';hideAllItemForms();if(confirmationSection)confirmationSection.style.display='none';if(donateMoneyContainer){donateMoneyContainer.style.display='block';const t=donateMoneyContainer.closest(".donate-option-card");if(t)t.style.display="flex";donateMoneyContainer.scrollIntoView({behavior:"smooth",block:"nearest"});const e=donateMoneyContainer.querySelectorAll('input[name="amount"]'),o=donateMoneyContainer.querySelector("#custom-amount");if(e.length>0&&o){e.forEach(t=>{t.onchange=()=>{const e="custom"===t.value&&t.checked;o.style.display=e?"block":"none",o.required=e,e&&o.focus()}});const t=donateMoneyContainer.querySelector('input[name="amount"]:checked');t?.dispatchEvent(new Event("change"))}}}
-        function showDonateItemsOptions(){/*... (implementation kept same) ...*/ if(donateMoneyContainer)donateMoneyContainer.style.display='none';hideAllItemForms();if(confirmationSection)confirmationSection.style.display='none';if(donateItemsContainer){donateItemsContainer.style.display='block';const t=donateItemsContainer.closest(".donate-option-card");t&&(t.style.display="flex"),donateItemsContainer.scrollIntoView({behavior:"smooth",block:"nearest"})}}
-        function togglePickupFields(t){/*... (implementation kept same) ...*/ const e=t.closest(".pickup-dropoff-form");if(!e)return;const o=e.querySelector(".pickup-fields"),n=e.querySelector(".dropoff-info"),i=e.querySelectorAll('.pickup-fields input[required], .pickup-fields textarea[required]');"pickup"===t.value&&t.checked?(o&&(o.style.display="block"),n&&(n.style.display="none"),i.forEach(t=>t.required=!0)):"dropoff"===t.value&&t.checked&&(o&&(o.style.display="none"),n&&(n.style.display="block"),i.forEach(t=>t.required=!1))}
-        function hideAllItemForms(){/*... (implementation kept same) ...*/ allItemForms.forEach(t=>t.style.display='none'),itemCategoryButtons.forEach(t=>t.classList.remove("active"))}
-        itemCategoryButtons.forEach(t=>{t.addEventListener("click",()=>{const e=t.getAttribute("data-form");hideAllItemForms(),confirmationSection&&(confirmationSection.style.display="none");const o=document.getElementById(e);if(o){o.style.display="block",t.classList.add("active");const e=o.querySelector('input[name="delivery_option"][value="pickup"]');e&&(e.checked=!0,togglePickupFields(e)),o.scrollIntoView({behavior:"smooth",block:"start"})}})});
-        document.querySelectorAll('.donation-form[data-item-type]').forEach(t=>{t.addEventListener("submit",e=>{e.preventDefault(),t.querySelectorAll('[style*="border: 1px solid red"]').forEach(t=>t.style.border="");const o=t.querySelector('input[name="delivery_option"]:checked');let n=!0;const i=t.querySelectorAll("[required]");if(i.forEach(e=>{const i=e.closest(".pickup-fields"),r=o&&"pickup"===o.value;i&&!r?e.required=!1:(i&&r&&(e.required=!0),e.value||"radio"===e.type&&!t.querySelector(`input[name="${e.name}"]:checked`)||"checkbox"===e.type&&!e.checked&&e.required?null!==e.offsetParent&&(console.error(`Field "${e.name||e.id}" is required.`),e.style.border="1px solid red",e.closest(".radio-group, .checkbox-group")?.style.border||(e.closest(".radio-group, .checkbox-group").style.border="1px solid red"),n=!1):(e.style.border="",e.closest(".radio-group, .checkbox-group")&&(e.closest(".radio-group, .checkbox-group").style.border="")))}),!n){alert("Please fill in all required fields (marked in red).");const e=t.querySelector('[style*="border: 1px solid red"]');return void(e&&(e.focus(),e.scrollIntoView({behavior:"smooth",block:"center"})))}console.log(`Simulating submission for: ${t.dataset.itemType}`),console.log("Form Data:",Object.fromEntries(new FormData(t).entries()));const r="GZR-"+Math.random().toString(36).substring(2,8).toUpperCase();referenceIdElement&&(referenceIdElement.textContent=r),t.parentElement.style.display="none",hideAllItemForms(),confirmationSection&&(confirmationSection.style.display="block",confirmationSection.scrollIntoView({behavior:"smooth",block:"center"})),t.reset(),t.querySelectorAll('[style*="border: 1px solid red"]').forEach(t=>t.style.border=""),t.querySelectorAll('.radio-group[style*="border"], .checkbox-group[style*="border"]').forEach(t=>t.style.border="");const s=t.querySelector('input[name="delivery_option"][value="pickup"]');s&&togglePickupFields(s)})});
-        const moneyForm=document.getElementById("money-donation-form");moneyForm&&moneyForm.addEventListener("submit",t=>{t.preventDefault(),moneyForm.querySelectorAll('[style*="border: 1px solid red"]').forEach(t=>t.style.border="");const e=moneyForm.querySelector("#custom-amount"),o=moneyForm.querySelector('input[name="amount"]:checked');let n=!0;if(o&&"custom"===o.value){if(!e||!e.value||parseFloat(e.value)<=0)alert("Please enter a valid positive custom amount."),e&&(e.style.border="1px solid red",e.focus()),n=!1;else if(e)e.style.border=""}else if(o);else{alert("Please select or enter a donation amount.");const t=moneyForm.querySelector(".amount-options .radio-group");t&&(t.style.border="1px solid red"),n=!1}const i=moneyForm.querySelector(".amount-options .radio-group");i&&(i.style.border=""),n&&(console.log("Simulating Proceed to Payment..."),console.log("Money Form Data:",Object.fromEntries(new FormData(moneyForm).entries())),alert("Thank You! Proceeding to Payment (Simulation - Integration Required)"),moneyForm.reset(),e&&(e.style.display="none",e.style.border=""),moneyForm.querySelector('input[name="amount"][value="500"]').checked=!0)});
 
-        // Initial setup - Ensure homepage layout is shown on load
-        // (This should happen by default due to CSS, but we can be explicit)
-        // showHomepageLayout('hero'); // Call this if you need to force the view on load
+        function showDonateMoneyForm(){
+             if(donateItemsContainer) donateItemsContainer.style.display = 'none';
+             hideAllItemForms();
+             if(confirmationSection) confirmationSection.style.display = 'none';
+             if(donateMoneyContainer){
+                 donateMoneyContainer.style.display = 'block';
+                 const parentCard = donateMoneyContainer.closest(".donate-option-card");
+                 if(parentCard) parentCard.style.display = "flex"; // Ensure card is visible if somehow hidden
+                 donateMoneyContainer.scrollIntoView({behavior: "smooth", block: "nearest"});
+
+                 // Handle custom amount visibility
+                 const amountRadios = donateMoneyContainer.querySelectorAll('input[name="amount"]');
+                 const customAmountInput = donateMoneyContainer.querySelector('#custom-amount');
+                 if (amountRadios.length > 0 && customAmountInput) {
+                    amountRadios.forEach(radio => {
+                        radio.onchange = () => {
+                            const showCustom = radio.value === 'custom' && radio.checked;
+                            customAmountInput.style.display = showCustom ? 'block' : 'none';
+                            customAmountInput.required = showCustom;
+                            if (showCustom) customAmountInput.focus();
+                        };
+                    });
+                    // Trigger initial check
+                    const checkedRadio = donateMoneyContainer.querySelector('input[name="amount"]:checked');
+                    checkedRadio?.dispatchEvent(new Event('change'));
+                 }
+             }
+        }
+
+        function showDonateItemsOptions(){
+            if(donateMoneyContainer) donateMoneyContainer.style.display = 'none';
+            hideAllItemForms(); // Hide any specific item forms first
+            if(confirmationSection) confirmationSection.style.display = 'none';
+            if(donateItemsContainer){
+                donateItemsContainer.style.display = 'block';
+                const parentCard = donateItemsContainer.closest(".donate-option-card");
+                if(parentCard) parentCard.style.display = "flex"; // Ensure card is visible
+                donateItemsContainer.scrollIntoView({behavior: "smooth", block: "nearest"});
+            }
+        }
+
+        function togglePickupFields(radioInput){
+            const formContainer = radioInput.closest('.pickup-dropoff-form');
+            if(!formContainer) return;
+            const pickupFieldsDiv = formContainer.querySelector('.pickup-fields');
+            const dropoffInfoDiv = formContainer.querySelector('.dropoff-info');
+            const requiredInputs = formContainer.querySelectorAll('.pickup-fields input[required], .pickup-fields textarea[required]');
+
+            if(radioInput.value === 'pickup' && radioInput.checked){
+                if(pickupFieldsDiv) pickupFieldsDiv.style.display = 'block';
+                if(dropoffInfoDiv) dropoffInfoDiv.style.display = 'none';
+                requiredInputs.forEach(input => input.required = true);
+            } else if (radioInput.value === 'dropoff' && radioInput.checked){
+                 if(pickupFieldsDiv) pickupFieldsDiv.style.display = 'none';
+                if(dropoffInfoDiv) dropoffInfoDiv.style.display = 'block';
+                requiredInputs.forEach(input => input.required = false); // Mark as not required for validation
+            }
+        }
+
+        function hideAllItemForms(){
+             // Check if allItemForms is defined and iterable
+            if (allItemForms && typeof allItemForms[Symbol.iterator] === 'function') {
+                allItemForms.forEach(formEl => {
+                    // Check if formEl and its parentElement exist
+                    if(formEl && formEl.parentElement) {
+                        formEl.parentElement.style.display = 'none'; // Hide the container div
+                    }
+                });
+            }
+            // Check if itemCategoryButtons is defined and iterable
+             if (itemCategoryButtons && typeof itemCategoryButtons[Symbol.iterator] === 'function') {
+                itemCategoryButtons.forEach(btn => btn.classList.remove('active'));
+             }
+        }
+
+
+        // Add listeners to category buttons to show specific item forms
+        itemCategoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const formId = button.getAttribute('data-form');
+                hideAllItemForms(); // Hide others first
+                if(confirmationSection) confirmationSection.style.display = 'none';
+
+                const targetFormContainer = document.getElementById(formId);
+                if(targetFormContainer){
+                    targetFormContainer.style.display = 'block'; // Show the container
+                    button.classList.add('active');
+
+                    // Reset delivery option to default 'pickup' and show relevant fields
+                    const pickupRadio = targetFormContainer.querySelector('input[name="delivery_option"][value="pickup"]');
+                    if(pickupRadio) {
+                         pickupRadio.checked = true; // Ensure pickup is default
+                         togglePickupFields(pickupRadio); // Update field visibility
+                    }
+
+                    targetFormContainer.scrollIntoView({behavior: 'smooth', block: 'start'});
+                }
+            });
+        });
+
+
+        // --- Supabase Form Submission Logic ---
+
+        // ** ITEM DONATION FORM SUBMISSION **
+        document.querySelectorAll('.donation-form[data-item-type]').forEach(form => {
+            form.addEventListener('submit', async (event) => { // Add async
+                event.preventDefault();
+                form.querySelectorAll('[style*="border: 1px solid red"]').forEach(el => el.style.border = ""); // Reset errors
+
+                // --- Form Validation ---
+                const deliveryOption = form.querySelector('input[name="delivery_option"]:checked');
+                let isValid = true;
+                const requiredFields = form.querySelectorAll("[required]"); // Get potentially required fields
+
+                requiredFields.forEach(field => {
+                    const pickupFieldsDiv = field.closest('.pickup-fields');
+                    const isPickupField = pickupFieldsDiv !== null;
+                    const pickupSelected = deliveryOption && deliveryOption.value === 'pickup';
+                    let isActuallyRequired = field.hasAttribute('required');
+                    if (isPickupField && !pickupSelected) {
+                        isActuallyRequired = false;
+                    }
+
+                    if (isActuallyRequired) {
+                        if (!field.value || (field.type === 'radio' && !form.querySelector(`input[name="${field.name}"]:checked`)) || (field.type === 'checkbox' && !field.checked)) {
+                             if(field.offsetParent !== null) {
+                                console.error(`Field "${field.name || field.id}" is required.`);
+                                field.style.border = '1px solid red';
+                                const group = field.closest('.radio-group, .checkbox-group');
+                                if (group && !group.style.border) { group.style.border = '1px solid red'; }
+                                isValid = false;
+                            }
+                        } else {
+                             field.style.border = "";
+                            const group = field.closest('.radio-group, .checkbox-group');
+                            if(group) group.style.border = "";
+                        }
+                    } else {
+                         field.style.border = "";
+                        const group = field.closest('.radio-group, .checkbox-group');
+                        if(group) group.style.border = "";
+                    }
+                });
+
+                if (!isValid) {
+                    alert("Please fill in all required fields (marked in red).");
+                    const firstError = form.querySelector('[style*="border: 1px solid red"]');
+                    if (firstError) {
+                        firstError.focus();
+                        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    return;
+                }
+                // --- End Validation ---
+
+                // ** Collect Data **
+                const formData = new FormData(form);
+                const formObject = Object.fromEntries(formData.entries());
+                const itemType = form.dataset.itemType;
+                const referenceId = 'GZR-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+                let itemDetailsText = '';
+                 if (itemType === 'Clothes') {
+                    itemDetailsText = `Type: ${formObject.clothes_type || 'N/A'}, Condition: ${formObject.clothes_condition || 'N/A'}`;
+                } else if (itemType === 'Toys') {
+                    itemDetailsText = `Type: ${formObject.toys_type || 'N/A'}, Condition: ${formObject.toys_condition || 'N/A'}`;
+                } else if (itemType === 'Books') {
+                    itemDetailsText = `Type: ${formObject.books_type || 'N/A'}, Language: ${formObject.book_language || 'N/A'}`;
+                }
+
+                const donationData = {
+                    reference_id: referenceId, donation_type: 'Item',
+                    donor_name: formObject.donor_name || null, donor_contact: formObject.donor_contact || null,
+                    donor_address: formObject.donor_address || null, item_category: itemType,
+                    item_details: itemDetailsText, item_description: formObject.other_description || null,
+                    delivery_option: formObject.delivery_option || null, pickup_date: formObject.pickup_date || null,
+                    pickup_time: formObject.pickup_time || null,
+                    status: formObject.delivery_option === 'pickup' ? 'Pending Pickup' : 'Pending Dropoff'
+                };
+
+                console.log('Submitting Item Donation to Supabase:', donationData);
+                const submitButton = form.querySelector('button[type="submit"]');
+                if(submitButton) submitButton.disabled = true; submitButton.textContent = 'Submitting...';
+
+                 // ** Insert into Supabase **
+                try {
+                    if (!supabase) throw new Error("Supabase client is not initialized."); // Check if supabase exists
+
+                    const { data, error } = await supabase
+                        .from('donations')
+                        .insert([donationData])
+                        .select();
+
+                    if (error) {
+                        console.error('Supabase Insert Error:', error);
+                        alert(`Submission failed: ${error.message}\n\nPlease check the details and try again. Make sure column names in the code match your Supabase table.`);
+                        if(submitButton) submitButton.disabled = false; submitButton.textContent = `Submit ${itemType} Donation`;
+                        return;
+                    }
+
+                    console.log('Supabase Insert Success:', data);
+                    if (referenceIdElement) referenceIdElement.textContent = referenceId;
+                    if(form.parentElement) form.parentElement.style.display = 'none';
+                    hideAllItemForms();
+                    if (confirmationSection) {
+                        confirmationSection.style.display = 'block';
+                        confirmationSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    form.reset();
+                    form.querySelectorAll('[style*="border: 1px solid red"]').forEach(el => el.style.border = "");
+                    form.querySelectorAll('.radio-group[style*="border"], .checkbox-group[style*="border"]').forEach(el => el.style.border = "");
+                    const defaultPickupRadio = form.querySelector('input[name="delivery_option"][value="pickup"]');
+                    if (defaultPickupRadio) { defaultPickupRadio.checked = true; togglePickupFields(defaultPickupRadio); }
+
+                } catch (catchError) {
+                    console.error('Unexpected Error or Supabase client issue:', catchError);
+                    alert(`An unexpected error occurred: ${catchError.message}`);
+                    if(submitButton) submitButton.disabled = false; submitButton.textContent = `Submit ${itemType} Donation`;
+                } finally {
+                     if(submitButton) submitButton.disabled = false; submitButton.textContent = `Submit ${itemType} Donation`;
+                }
+            });
+        });
+
+
+        // ** MONEY DONATION FORM SUBMISSION **
+        if (moneyForm) {
+            moneyForm.addEventListener('submit', async (event) => { // Add async
+                event.preventDefault();
+                 moneyForm.querySelectorAll('[style*="border: 1px solid red"]').forEach(el => el.style.border = "");
+
+                // --- Form Validation ---
+                 const customAmountInput = moneyForm.querySelector('#custom-amount');
+                const selectedAmountRadio = moneyForm.querySelector('input[name="amount"]:checked');
+                let isValid = true; let amountValue = null;
+
+                 if (selectedAmountRadio && selectedAmountRadio.value === 'custom') {
+                    if (!customAmountInput || !customAmountInput.value || parseFloat(customAmountInput.value) <= 0) {
+                        alert('Please enter a valid positive custom amount.');
+                        if (customAmountInput) { customAmountInput.style.border = '1px solid red'; customAmountInput.focus(); }
+                        isValid = false;
+                    } else {
+                        amountValue = parseFloat(customAmountInput.value);
+                        if (customAmountInput) customAmountInput.style.border = "";
+                    }
+                } else if (selectedAmountRadio) {
+                     amountValue = parseFloat(selectedAmountRadio.value);
+                 } else {
+                    alert('Please select or enter a donation amount.');
+                    const amountGroup = moneyForm.querySelector('.amount-options .radio-group');
+                    if (amountGroup) amountGroup.style.border = '1px solid red'; isValid = false;
+                }
+                 const amountGroupVisual = moneyForm.querySelector('.amount-options .radio-group');
+                 if(amountGroupVisual) amountGroupVisual.style.border = "";
+                 if (!isValid) return;
+                // --- End Validation ---
+
+                 // ** Collect Data **
+                 const formData = new FormData(moneyForm);
+                 const formObject = Object.fromEntries(formData.entries());
+                 const referenceId = 'GZR-M' + Math.random().toString(36).substring(2, 7).toUpperCase();
+                 const isAnonymous = formObject.anonymous === 'on';
+                 const donationData = {
+                    reference_id: referenceId, donation_type: 'Money',
+                    money_amount: amountValue, money_is_recurring: formObject.recurring === 'on',
+                    money_is_anonymous: isAnonymous, donor_name: isAnonymous ? 'Anonymous' : 'Payment Donor', // Placeholder
+                    status: 'Pending Payment'
+                 };
+
+                 console.log('Submitting Money Donation to Supabase (Pre-Payment):', donationData);
+                 alert('Proceeding to Payment Gateway (Simulation)'); // Simulate going to payment
+                 const submitButton = moneyForm.querySelector('button[type="submit"]');
+                 if(submitButton) submitButton.disabled = true; submitButton.textContent = 'Processing...';
+
+                // --- SIMULATE PAYMENT & INSERT ---
+                // Replace this simulation with actual payment gateway logic
+                 await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate payment delay
+                 const paymentSuccess = true; // Simulate success
+
+                 if (paymentSuccess) {
+                     try {
+                         if (!supabase) throw new Error("Supabase client is not initialized.");
+                         donationData.status = 'Completed'; // Update status after simulated success
+                         donationData.donor_name = isAnonymous ? 'Anonymous' : 'Payment Donor (Success)';
+
+                         const { data, error } = await supabase.from('donations').insert([donationData]).select();
+
+                         if (error) {
+                             console.error('Supabase Insert Error (Money):', error);
+                             alert(`Saving donation record failed: ${error.message}\n\nPlease check the details and try again.`);
+                             if(submitButton) submitButton.disabled = false; submitButton.textContent = 'Proceed to Payment';
+                             return;
+                         }
+
+                         console.log('Supabase Insert Success (Money):', data);
+                         if (referenceIdElement) referenceIdElement.textContent = referenceId;
+                         if(moneyForm.parentElement) moneyForm.parentElement.style.display = 'none';
+                         hideAllItemForms();
+                         if (confirmationSection) {
+                             confirmationSection.style.display = 'block';
+                             confirmationSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                         }
+                         moneyForm.reset();
+                         const customAmountInputReset = moneyForm.querySelector('#custom-amount');
+                         if (customAmountInputReset) { customAmountInputReset.style.display = 'none'; customAmountInputReset.style.border = ""; }
+                         const defaultMoneyRadio = moneyForm.querySelector('input[name="amount"][value="500"]');
+                         if(defaultMoneyRadio) defaultMoneyRadio.checked = true;
+
+                     } catch (catchError) {
+                         console.error('Unexpected Error (Money):', catchError);
+                         alert(`An unexpected error occurred: ${catchError.message}`);
+                         if(submitButton) submitButton.disabled = false; submitButton.textContent = 'Proceed to Payment';
+                     } finally {
+                         if(submitButton) submitButton.disabled = false; submitButton.textContent = 'Proceed to Payment';
+                     }
+                 } else {
+                     alert('Payment was not completed.'); // Simulate failure
+                     if(submitButton) submitButton.disabled = false; submitButton.textContent = 'Proceed to Payment';
+                 }
+                 // --- END SIMULATION ---
+            });
+        }
+
+        // Initial setup call if needed
+        // showHomepageLayout('hero');
 
     </script>
 
